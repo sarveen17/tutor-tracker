@@ -1,15 +1,154 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+/* Base */
+
+* {
+  box-sizing: border-box;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+/* Header */
 
 header {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
+header h1 {
+  margin-bottom: 5px;
+}
+
+header p {
+  margin-top: 0;
+}
+
+/* Sections */
+
+section {
+  margin-bottom: 30px;
+}
+
+#std-section,
+#student-view {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Search and Sort */
+
+#student-search,
+#student-sort {
+  padding: 8px 10px;
+  margin-bottom: 15px;
+}
+
+/* Student Cards */
+
+#std-list {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.student-name {
+  margin-bottom: 5px;
+}
+
+.student-subject {
+  margin-top: 0;
+}
+
+#std-list > div {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Forms */
+
+form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+form input,
+form select,
+form textarea {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Buttons */
+
 button {
-    padding: 10px 16px;
-    cursor: pointer;
+  padding: 8px 14px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* Student View */
+
+#student-view-content {
+  margin-top: 20px;
+}
+
+.assessment-list,
+.lesson-list {
+  padding-left: 20px;
+}
+
+.assessment-list li,
+.lesson-list li {
+  margin-bottom: 10px;
+}
+
+.assessment-list button,
+.lesson-list button {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  #std-section,
+  #student-view {
+    padding: 15px;
+  }
+
+  button {
+    margin-bottom: 5px;
+  }
 }
