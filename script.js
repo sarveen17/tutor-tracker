@@ -309,19 +309,16 @@ stdForm.addEventListener('submit', function (event) {
 
   const nameInput = document.getElementById('std-name');
   const subjectInput = document.getElementById('std-subject');
-  // const averageInput = document.getElementById('std-average');
 
   const newStudent = {
     id: Date.now(),
     name: nameInput.value,
     subject: subjectInput.value,
-    // average: averageInput.value === '' ? null : Number(averageInput.value), // ternary operator --> acts like if/else, so if averageInput.value equals an empty string, the value is null, otherwise the value can be converted to a number
     assessments: [],
     lessons: [],
   };
 
   students.push(newStudent); // push means add something to an array - syntax: array.push(newItem)
-  // displayStudent(newStudent);
   saveStudents();
   renderStudents();
   stdForm.reset();
@@ -339,8 +336,6 @@ editForm.addEventListener('submit', function (event) {
 
   studentBeingEdited.name = editName.value;
   studentBeingEdited.subject = editSubject.value;
-  // studentBeingEdited.average =
-  //   editAverage.value === '' ? null : Number(editAverage.value);
 
   const editedCard = studentList.querySelector(
     `[data-student-id="${studentBeingEdited.id}"]`,
@@ -350,8 +345,6 @@ editForm.addEventListener('submit', function (event) {
     studentBeingEdited.name;
   editedCard.querySelector('.student-subject').textContent =
     studentBeingEdited.subject;
-  // editedCard.querySelector('.student-average').textContent =
-  //   `Average: ${studentBeingEdited.average !== null ? studentBeingEdited.average + '%' : 'No average yet'}`;
 
   editForm.hidden = true;
   studentBeingEdited = null;
