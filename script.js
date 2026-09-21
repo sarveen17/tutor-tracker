@@ -1,22 +1,6 @@
 console.log('NEW SCRIPT LOADED');
 
-let students = [
-  // a const variable with an array value
-  {
-    id: 1,
-    name: 'Sarah',
-    subject: 'Maths',
-    assessments: [],
-    lessons: [],
-  },
-  {
-    id: 2,
-    name: 'Pierce',
-    subject: 'English',
-    assessments: [],
-    lessons: [],
-  },
-];
+let students = [];
 
 console.log(students); // this is used for debugging/testing to see if the code works
 
@@ -162,8 +146,41 @@ function displayStudentDetails(student) {
 
   student.lessons.forEach(function (lesson) {
     const lessonItem = document.createElement('li');
+    const lessonText = document.createElement('span');
 
-    lessonItem.textContent = `${formatDate(lesson.date)} - ${lesson.note}`;
+    const moreButton = document.createElement('button');
+    moreButton.textContent = 'Show more';
+    moreButton.classList.add('more-button');
+
+    if (lesson.note.length > 150) {
+      const lessonDate = formatDate(lesson.date);
+
+      lessonText.textContent = `${lessonDate} - ${lesson.note.slice(0, 150)}...`;
+
+      lessonItem.appendChild(lessonText);
+      lessonItem.appendChild(moreButton);
+
+      let noteExpanded = false;
+
+      moreButton.addEventListener('click', function () {
+        if (noteExpanded === false) {
+          lessonText.textContent = `${lessonDate} - ${lesson.note}`;
+          moreButton.textContent = 'Show less';
+
+          noteExpanded = true;
+        } else {
+          lessonText.textContent = `${lessonDate} - ${lesson.note.slice(0, 150)}...`;
+
+          moreButton.textContent = 'Show more';
+
+          noteExpanded = false;
+        }
+      });
+    } else {
+      const lessonDate = formatDate(lesson.date);
+      lessonText.textContent = `${lessonDate} - ${lesson.note}`;
+      lessonItem.appendChild(lessonText);
+    }
 
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
