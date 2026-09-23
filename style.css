@@ -81,6 +81,7 @@ section {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  background-color: peachpuff;
 }
 
 /* Forms */
@@ -90,6 +91,7 @@ form {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  background-color: beige;
 }
 
 form input,
@@ -105,6 +107,12 @@ textarea {
   resize: vertical;
 }
 
+#edit-form,
+#edit-assessment-form,
+#edit-lesson-form {
+  background-color: ghostwhite;
+}
+
 /* Buttons */
 
 button {
@@ -117,6 +125,8 @@ button {
 
 #student-view-content {
   margin-top: 20px;
+  padding: 10px;
+  background-color: peachpuff;
 }
 
 .assessment-list,
