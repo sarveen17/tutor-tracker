@@ -220,9 +220,10 @@ function renderStudents() {
   studentList.innerHTML = '';
 
   const filteredStudents = students.filter(function (student) {
-    return student.name
-      .toLowerCase()
-      .includes(studentSearch.value.toLowerCase());
+    return (
+      student.name.toLowerCase().includes(studentSearch.value.toLowerCase()) ||
+      student.subject.toLowerCase().includes(studentSearch.value.toLowerCase())
+    );
   });
 
   filteredStudents.sort(function (a, b) {
