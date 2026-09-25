@@ -127,6 +127,7 @@ button {
   margin-top: 20px;
   padding: 10px;
   background-color: peachpuff;
+  border-radius: 8px;
 }
 
 .assessment-list,

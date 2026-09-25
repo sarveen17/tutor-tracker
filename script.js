@@ -2,9 +2,7 @@ console.log('NEW SCRIPT LOADED');
 
 let students = [];
 
-console.log(students); // this is used for debugging/testing to see if the code works
-
-const studentList = document.getElementById('std-list'); // store a reference to the element with the id student-list in the variable studentList
+const studentList = document.getElementById('std-list');
 
 function formatDate(date) {
   const dateObject = new Date(date);
@@ -27,7 +25,7 @@ function displayStudent(student) {
         <button class="view-btn">View</button>
         <button class="edit-btn">Edit</button>
         <button class="delete-btn">Delete</button>
-    `; // toFixed(1) for the average means round off to one decimal place
+    `;
 
   const deleteButton = studentCard.querySelector('.delete-btn');
   const editButton = studentCard.querySelector('.edit-btn');
@@ -42,7 +40,6 @@ function displayStudent(student) {
 
     editName.value = student.name;
     editSubject.value = student.subject;
-    // editAverage.value = student.average ?? ''; // ?? "" means return student.average, but if null then return ""
 
     editForm.hidden = false;
   });
@@ -54,12 +51,12 @@ function displayStudent(student) {
 
     if (studentIndex !== -1) {
       students.splice(studentIndex, 1);
-      // studentCard.remove();
+
       saveStudents();
       renderStudents();
       updateStudentCount();
       console.log(students);
-    } // !== -1 is because if student is not found, the index value would be -1
+    }
   });
 
   studentList.appendChild(studentCard);
@@ -77,7 +74,7 @@ function displayStudentDetails(student) {
   const average =
     student.assessments.length > 0 ? total / student.assessments.length : null;
 
-  const latestAssessment = student.assessments[student.assessments.length - 1]; // minus one because JS arrays start at index 0, so the last item in a four-item array would be index 3
+  const latestAssessment = student.assessments[student.assessments.length - 1];
   const previousAssessment =
     student.assessments[student.assessments.length - 2];
 
@@ -254,11 +251,6 @@ const assessmentDate = document.getElementById('assessment-date');
 
 assessmentDate.value = new Date().toLocaleDateString('en-CA');
 
-/* const today = new Date();
- const todayString = today.toISOString().split("T")[0];
- assessmentDate.value = todayString;
- this is another way to make the date for the assessment form to show the current date */
-
 const editAssessmentForm = document.getElementById('edit-assessment-form');
 const editAssessmentName = document.getElementById('edit-assessment-name');
 const editAssessmentScore = document.getElementById('edit-assessment-score');
@@ -289,7 +281,7 @@ const studentViewContent = document.getElementById('student-view-content');
 
 function saveStudents() {
   localStorage.setItem('savedStudents', JSON.stringify(students));
-} // setItem(new thing, thing you want to place in new thing);
+}
 
 const savedStudents = localStorage.getItem('savedStudents');
 
@@ -307,7 +299,7 @@ if (viewingStudentId !== null) {
   if (student !== undefined) {
     displayStudentDetails(student);
   }
-} // this is to keep the student view when refresh page rather than going back to dashboard; check first line of displayStudentDetails() for the first part of this
+}
 
 function updateStudentCount() {
   studentCount.textContent = students.length;
@@ -322,8 +314,7 @@ renderStudents();
 updateStudents(); // update student dropdown
 
 stdForm.addEventListener('submit', function (event) {
-  // callback function: function that's passed into some other function/method that's executed/called later
-  event.preventDefault(); // prevent the browser from refreshing the page by default when a form is submitted so that the following code actually gets executed
+  event.preventDefault();
 
   const nameInput = document.getElementById('std-name');
   const subjectInput = document.getElementById('std-subject');
@@ -336,7 +327,7 @@ stdForm.addEventListener('submit', function (event) {
     lessons: [],
   };
 
-  students.push(newStudent); // push means add something to an array - syntax: array.push(newItem)
+  students.push(newStudent);
   saveStudents();
   renderStudents();
   stdForm.reset();
@@ -410,7 +401,7 @@ assessmentForm.addEventListener('submit', function (event) {
 
   if (student === undefined) {
     return;
-  } // this is just a defensive step; not actually necessary because the dropdown already has student's name, but still could be useful in the event that, for whatever reason, the student exists in the dropdown even after being deleted from the students array
+  }
 
   const assessment = {
     id: Date.now(),
@@ -514,10 +505,10 @@ studentSearch.addEventListener('input', function () {
 
 studentSort.addEventListener('change', function () {
   renderStudents();
-}); // change here refers to the change in the dropdown option for sorting
+});
 
 backToStudents.addEventListener('click', function () {
-  sessionStorage.removeItem('viewingStudentId'); // ensures that when we go back to dashboard and refresh page, it won't return to student view using the temporary sessionStorage student ID
+  sessionStorage.removeItem('viewingStudentId');
   studentView.hidden = true;
   studentSection.hidden = false;
 });

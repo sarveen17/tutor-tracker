@@ -2,6 +2,9 @@
 
 TwoTrack is a browser-based student progress tracker built with HTML, CSS, and JavaScript. It is designed for tutors who need to organize student information, record assessments and lesson notes, and keep track of student progress all in one place.
 
+![TwoTrack Dashboard View](img/dashboard.png)
+![TwoTrack Student View](img/student-view.png)
+
 ## Features
 
 - Add and manage student records
